@@ -239,19 +239,13 @@ def inference_tab():
                 )
 
             with gr.Row():
-                url = gr.Textbox(
-                    label=("url to yotube link"),
-                )
-                audio_name = gr.Textbox(
-                    label=("audio name"),
-                )
-                dwnl_button = gr.Button(
-                    label=("download button"),
-                )
+                url = gr.Textbox(label=("url to yotube link")
+                audio_name = gr.Textbox(label=("audio name")
+                dwnl_button = gr.Button(label=("download button")
                 dwnl_button.click(
                     fn=download_audio,
                     inputs=[audio_name],
-                    outputs=[url],
+                    outputs=[url]
                 )
                 
                     

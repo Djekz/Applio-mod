@@ -240,9 +240,9 @@ def inference_tab():
 
             with gr.Row():
                 url = gr.Textbox(label="url to yotube link.")
-                       audio_name = gr.Textbox(label="file name.")
-                       dwnl_button = gr.Button("Download")
-                       dwnl_button.click(fn=download_audio,inputs=[audio_name],outputs=[url])
+                    audio_name = gr.Textbox(label="file name.")
+                    dwnl_button = gr.Button("Download")
+                    dwnl_button.click(fn=download_audio,inputs=[audio_name],outputs=[url])
 
         with gr.Accordion(i18n("Advanced Settings"), open=False):
             with gr.Column():

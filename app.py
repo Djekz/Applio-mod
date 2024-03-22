@@ -64,16 +64,6 @@ with gr.Blocks(theme=my_applio, title="Applio") as Applio:
     with gr.Tab(i18n("Inference")):
         inference_tab()
 
-    with gr.Tab(i18n("Train")):
-        if gpu_available() or load_fake_gpu():
-            train_tab()
-        else:
-            gr.Markdown(
-                i18n(
-                    "Training is currently unsupported due to the absence of a GPU. To activate the training tab, navigate to the settings tab and enable the 'Fake GPU' option."
-                )
-            )
-
     with gr.Tab(i18n("TTS")):
         tts_tab()
 
@@ -95,8 +85,6 @@ with gr.Blocks(theme=my_applio, title="Applio") as Applio:
     with gr.Tab(i18n("Settings")):
         presence_tab()
         flask_server_tab()
-        if not gpu_available():
-            fake_gpu_tab()
         theme_tab()
         version_tab()
         lang_tab()

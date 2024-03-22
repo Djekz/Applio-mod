@@ -164,6 +164,22 @@ def match_index(model_file_value):
     return ""
 
 
+def download_audio(url, audio_name):
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'outtmpl': f'audios/{audio_name}',
+    }
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
+    return ""
+
+
+
 # Inference tab
 def inference_tab():
     default_weight = random.choice(names) if names else None
@@ -220,6 +236,12 @@ def inference_tab():
                     interactive=True,
                     allow_custom_value=True,
                 )
+
+            with gr.Row():
+                url = gr.Textbox(label="url to yotube link.")
+                       audio_name = gr.Textbox(label="file name.")
+                       dwnl_button = gr.Button("Download")
+                       dwnl_button.click(fn=download_audio,inputs=[audio_name],outputs=[url])
 
         with gr.Accordion(i18n("Advanced Settings"), open=False):
             with gr.Column():
@@ -362,6 +384,7 @@ def inference_tab():
                         "rmvpe",
                         "fcpe",
                         "hybrid[rmvpe+fcpe]",
+                        "hybrid[rmvpe+fcpe+dio+crepe]",
                     ],
                     value="rmvpe",
                     interactive=True,

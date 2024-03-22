@@ -4,6 +4,7 @@ import regex as re
 import shutil
 import datetime
 import random
+import yt_dlp
 
 from core import (
     run_infer_script,
@@ -169,10 +170,10 @@ def download_audio(url, audio_name):
         'format': 'bestaudio/best',
         'postprocessors': [{
             'key': 'FFmpegExtractAudio',
-            'preferredcodec': 'mp3',
+            'preferredcodec': 'wav',
             'preferredquality': '192',
         }],
-        'outtmpl': f'audios/{audio_name}',
+        'outtmpl': f'assets/audios/{audio_name}',
     }
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         ydl.download([url])

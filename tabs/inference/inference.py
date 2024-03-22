@@ -245,7 +245,7 @@ def inference_tab():
                 audio_name = gr.Textbox(
                     label=("audio name"),
                 )
-                dwnl_button = gr.Textbox(
+                dwnl_button = gr.Button(
                     label=("download button"),
                 )
                 dwnl_button.click(
